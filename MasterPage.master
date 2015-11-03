@@ -1,0 +1,70 @@
+﻿<%@ Master Language="C#" AutoEventWireup="true" CodeFile="MasterPage.master.cs" Inherits="MasterPage" %>
+
+<!DOCTYPE html>
+
+<html>
+<head runat="server">
+    <title>Welcome to Alice's Webshop!</title>
+    <link rel="stylesheet" href="StyleSheet/StyleSheet.css" type="text/css" />
+    <asp:ContentPlaceHolder ID="head" runat="server">
+    </asp:ContentPlaceHolder>
+</head>
+
+<body>
+    <form id="form1" name="form1" runat="server" method="post">
+
+        <div id="wrapper">
+
+            <!-- The header area -->
+            <div id="header">
+                <%--back to Mainpage when click logo--%>
+                <div id="logo" onclick="location.href='<%=Page.ResolveUrl("~/Pages/AboutUs.aspx")%>'"></div>
+            </div>
+
+            <%--navigation bar--%>
+            <ul id="nav" forecolor="#FF66CC">
+                <li>
+                    <asp:HyperLink ID="HyperLink4" runat="server" NavigateUrl="~/Pages/WebShop.aspx">&#10029;web shop</asp:HyperLink></li>
+                <li>
+                    <asp:HyperLink ID="HyperLink2" runat="server" NavigateUrl="~/Pages/AboutUs.aspx">&#10029;about us</asp:HyperLink></li>
+                <li>
+                    <asp:HyperLink ID="HyperLink1" runat="server" NavigateUrl="~/Pages/ContactUs.aspx">&#10029;contact us</asp:HyperLink></li>
+                <li>
+                    <asp:HyperLink ID="HyperLink3" runat="server" NavigateUrl="~/Pages/Accounts/AdminLogin.aspx">&#10029;management</asp:HyperLink></li>
+
+                <li style="margin-left:30px">
+                    <asp:HyperLink ID="lnkRegister" runat="server" NavigateUrl="~/Pages/Accounts/Register.aspx" style="margin-left:35px">&#9883;Register</asp:HyperLink>
+                    <asp:HyperLink ID="lnkLogIn" NavigateUrl="~/Pages/Accounts/Login.aspx" runat="server" >&#9883;Log in</asp:HyperLink>
+                </li>
+                <li style="margin-left:30px" >
+                    <asp:HyperLink ID="lnkCart" runat="server" NavigateUrl="~/Pages/ShoppingCart.aspx"/>
+                    <asp:LinkButton ID="btnLogOut" runat="server" Text="Log out" OnClick="btnLogOut_Click"  />
+                </li>
+            </ul>
+
+            <div id="content">
+                <asp:ContentPlaceHolder ID="ContentPlaceHolder1" runat="server">
+                </asp:ContentPlaceHolder>
+            </div>
+
+            <div class="clearfooter"></div>
+
+        </div>
+        <!-- End of wrapper -->
+
+        <!-- Footer -->
+        <div id="footer">
+            <div id="copyright">&copy; ALice Zhu</div>
+            <div id="date">
+                <!-- Call javascript function -->
+                <script type="text/javascript">
+                    document.getElementById("date").innerHTML = Date();
+                </script>
+            </div>
+        </div>
+
+    </form>
+
+
+</body>
+</html>
